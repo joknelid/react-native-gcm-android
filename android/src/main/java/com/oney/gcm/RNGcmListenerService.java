@@ -27,6 +27,8 @@ public class RNGcmListenerService extends GcmListenerService {
 
     @Override
     public void onMessageReceived(String from, Bundle bundle) {
+        Log.d(TAG, "got message!!!!!!!!!");
+        bundle.putString("from", from);
         sendNotification(bundle);
     }
 

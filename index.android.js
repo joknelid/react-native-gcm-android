@@ -34,6 +34,10 @@ class GcmAndroid {
     _notifHandlers.set(handler, listener);
   }
 
+  static subscribeTopic(token, topic) {
+    GcmModule.subscribeTopic(token, topic);
+  }
+
   static requestPermissions() {
     GcmModule.requestPermissions();
   }

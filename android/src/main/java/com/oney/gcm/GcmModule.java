@@ -19,7 +19,9 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.google.android.gms.gcm.GcmPubSub;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -155,6 +157,18 @@ public class GcmModule extends ReactContextBaseJavaModule implements LifecycleEv
                 }
             }
         }, intentFilter);
+    }
+
+    @ReactMethod
+    public void subscribeTopic(String token, String topic) {
+        GcmPubSub pubSub = GcmPubSub.getInstance(this.mReactContext);
+
+        try {
+            pubSub.subscribe(token, topic, null);
+        }
+        catch (java.io.IOException e) {
+            Log.e(TAG, "Failed to register topic");
+        }
     }
 
     @ReactMethod

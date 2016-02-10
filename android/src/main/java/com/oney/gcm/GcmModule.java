@@ -161,7 +161,7 @@ public class GcmModule extends ReactContextBaseJavaModule implements LifecycleEv
 
     @ReactMethod
     public void subscribeTopic(String token, String topic) {
-        GcmPubSub pubSub = GcmPubSub.getInstance(this.mReactContext);
+        GcmPubSub pubSub = GcmPubSub.getInstance(this.getReactApplicationContext());
 
         try {
             pubSub.subscribe(token, topic, null);

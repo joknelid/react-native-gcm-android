@@ -1,5 +1,7 @@
 package com.oney.gcm;
 
+import android.app.Activity;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -25,7 +27,7 @@ import com.facebook.react.views.scroll.ReactScrollViewManager;
 import com.facebook.react.views.swiperefresh.SwipeRefreshLayoutManager;
 import com.facebook.react.views.switchview.ReactSwitchManager;
 import com.facebook.react.views.text.ReactRawTextManager;
-import com.facebook.react.views.text.ReactTextInlineImageViewManager;
+//import com.facebook.react.views.text.ReactTextInlineImageViewManager;
 import com.facebook.react.views.text.ReactTextViewManager;
 import com.facebook.react.views.text.ReactVirtualTextViewManager;
 import com.facebook.react.views.textinput.ReactTextInputManager;
@@ -34,6 +36,8 @@ import com.facebook.react.views.view.ReactViewManager;
 import com.facebook.react.views.viewpager.ReactViewPagerManager;
 import com.facebook.react.views.webview.ReactWebViewManager;
 //import com.facebook.react.modules.clipboard.ClipboardModule;
+
+import io.neson.react.notification.NotificationPackage;
 
 /**
  * Package defining basic modules and view managers.
@@ -50,8 +54,10 @@ public class MainReactPackage implements ReactPackage {
                 new LocationModule(reactContext),
                 new NetworkingModule(reactContext),
 //                new NetInfoModule(reactContext),
-                new WebSocketModule(reactContext));
+                new WebSocketModule(reactContext),
 //                new ToastModule(reactContext));
+                new NotificationModule(reactContext, null)
+        );
     }
 
     @Override
@@ -74,7 +80,7 @@ public class MainReactPackage implements ReactPackage {
                 new ReactToolbarManager(),
                 new ReactViewManager(),
                 new ReactViewPagerManager(),
-                new ReactTextInlineImageViewManager(),
+//                new ReactTextInlineImageViewManager(),
                 new ReactVirtualTextViewManager(),
                 new SwipeRefreshLayoutManager(),
                 new ReactWebViewManager());
